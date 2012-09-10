@@ -2,13 +2,16 @@ from sys import exit
 import re
 
 def self_destruct():
+	print " "
 	print "It\'s 2002 and you are now an 18 year old billionaire with major issues."
 	print "You\'re partying like you just got out of juvie and maybe getting into a few bar fights."
 	print "Then pesky, pesky Nolan shows up again to bail you out."
-	print "He comments on your self-destruction and asks if you\'ve read the journals. What do you do?"
+	print "He comments on your self-destruction and asks if you\'ve read the journals."
+	print "What do you do?"
 	print " "
 	print "1) Say \"hell no, I don\'t care what they say. My father was a terrorist.\""
-	print "2) Consider that maybe this is not what you should be doing and maybe looking into your and your father\'s history would be worth your time."
+	print "2) Consider that maybe this is not what you should be doing and maybe"
+	print "   looking into your and your father\'s history would be worth your time."
 	next = raw_input("> ")
 	if next == "1":
 		destruct()
@@ -17,6 +20,7 @@ def self_destruct():
 	else:
 		dead("Looks like the guy you were fighting with in the bar came back out and stabbed you.")
 def destruct():
+	print " "
 	print "It\'s New Year\'s 2003 and you pick the wrong bar to party at."
 	print "You start a fight with these two punks."
 	print "One is a larger woman who seems to have a knife."
@@ -33,6 +37,7 @@ def destruct():
 	else:
 		dead("Too slow! The woman stabs you while the man punches you in the face. You die.")
 def anditbegins():
+	print " "
 	print "REVENGE TIME"
 
 def gold_room():
@@ -88,21 +93,26 @@ def cthulhu_room():
 		cthulhu_room()
 
 def dead(why):
+	print " "
 	print why, "Sorry."
 	exit(0)
 
 def start():
 	print "Date: June 2002. You're Amanda Clarke."
-	print "You're father is David Clarke, convicted of helping launder money for the domestic terrorists who blew up Flight 197 on June 4, 1993."
+	print "You're father is David Clarke, convicted of helping launder money"
+	print "for the domestic terrorists who blew up Flight 197 on June 4, 1993."
 	print "You've just been released from Allenwood Juvenile Detention Facility after two years." 
 	print "Picking you up is Nolan Ross."
 	print " "
 	print "Nolan hands you a box and tells you that your father is not who you think he is."
-	print "He also tells you that there is a key in the box that unlocks a safe in Switzerland with billions of dollars, the earnings from your father investing in his company."
+	print "He also tells you that there is a key in the box that unlocks a safe in Switzerland"
+	print "with billions of dollars, the earnings from your father investing in his company."
 	print "What do you do?"
 	print " "
-	print "1) Ignore the contents of the box. You already know what your father did. But definitely take the money. There is some sweet partying to be done."
-	print "2) You're intrigued. You go through the contents of the box. And take the money. It is yours, after all."
+	print "1) Ignore the contents of the box. You already know what your father did."
+	print "   But definitely take the money. There is some sweet partying to be done."
+	print "2) You're intrigued. You go through the contents of the box."
+	print "   And take the money. It is yours, after all."
 	
 	next = raw_input("> ")
 	
