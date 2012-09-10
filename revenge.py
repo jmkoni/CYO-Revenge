@@ -58,16 +58,24 @@ def dead(why):
 	exit(0)
 
 def start():
-	print "You are in a dark room."
-	print "There is a door to your right and left."
-	print "Which one do you take?"
+	print "Date: June 2002. You're Amanda Clarke."
+	print "You're father is David Clarke, convicted of helping launder money for the domestic terrorists who blew up Flight 197 on June 4, 1993."
+	print "You've just been released from Allenwood Juvenile Detention Facility after two years." 
+	print "Picking you up is Nolan Ross."
+	print " "
+	print "Nolan hands you a box and tells you that your father is not who you think he is."
+	print "He also tells you that there is a key in the box that unlocks a safe in Switzerland with billions of dollars, the earnings from your father investing in his company."
+	print "What do you do?"
+	print " "
+	print "1) Ignore the contents of the box. You already know what your father did. But definitely take the money. There is some sweet partying to be done."
+	print "2) You're intrigued. You go through the contents of the box. And take the money. It is yours, after all."
 	
 	next = raw_input("> ")
 	
-	if next == "left":
-		bear_room()
-	elif next == "right":
-		cthulhu_room()
+	if next == "1":
+		self_destruct()
+	elif next == "2":
+		anditbegins()
 	else:
 		dead("You stumble around the room until you starve.")
 
