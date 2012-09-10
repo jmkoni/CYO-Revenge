@@ -32,7 +32,7 @@ def destruct():
 		dead("Not quick enough! The woman stabs you as soon as you go for the man. You die.")
 	else:
 		dead("Too slow! The woman stabs you while the man punches you in the face. You die.")
-def anditbegins()
+def anditbegins():
 	print "REVENGE TIME"
 
 def gold_room():
