@@ -38,8 +38,27 @@ def destruct():
 		dead("Too slow! The woman stabs you while the man punches you in the face. You die.")
 def anditbegins():
 	print " "
-	print "REVENGE TIME"
-
+	print "Your father’s journals reveal that he isn’t the man that you thought he was."
+	print "He was framed.  Someone will have to pay for this."
+	print "Reading your father's journals, you find out who betrayed him."
+	print " "
+	print "1. Victoria Grayson: Queen of the Hamptons. Your father’s lover before he was framed."
+	print "2. Conrad Grayson: CEO of Grayson Global. He is directly responsible for what happened to your father."
+	print "3. Bill Harmon: Your father's best friend. Testified against your father to save his job.
+	print "4. Dr. Michelle Banks: Put you in an institution in order to further her career."
+	print "5. Mason Treadwell: Originally told you he would print the truth, but his book about your father was full of LIES!"
+	print "6. Senator Kingsly: Ignored evidence that would have saved your father and proven him not guilty."
+	print " "
+	print "What do you do now? Do you:"
+	print "1. Take time to plan it out. These assholes must be taken down appropriately."
+	print "2. Who needs time when you have guns?"
+	next = raw_input("> ")
+	if next == "1":
+		changetoemily()
+	elif next == "2":
+		gunsablazin()
+	else:
+		cthulhu()
 def gold_room():
 	print "This room is full of gold. How much do you take?"
 
@@ -78,19 +97,31 @@ def bear_room():
 		else:
 			print "I got no idea what that means."
 
-def cthulhu_room():
-	print "Here you see the great evil Cthulhu."
+def cthulhu():
+	print "Hmm. You seem to have wondered over to the ocean."
+	print "Rising out of the ocean is Cthulhu."
 	print "He, it, whatever stares at you and you go insane."
-	print "Do you flee for your life or eat your head?"
-
-	next = raw_input("> ")
-
-	if "flee" in next:
-		start()
-	elif "head" in next:
-		dead("Well that was tasty!")
+	print "Can you kill Cthulhu before he drives you insane?"
+	print "You have two choices. Do you pick the axe or the rifle?"
+	cthulhu_life = 0
+	emily_sanity = 0
+	while cthulhu_life < 10 and emily_sanity < 10:
+		next = raw_input("> ")
+		if "axe" in next:
+			cthulhu_life += 4
+			emily_sanity +=2
+			print "Nice hit!"
+		elif "rifle" in next:
+			cthulhu_life +=3
+			emily_sanity +=2
+			print "Good shot!"
+		else:
+			emily_sanity +=3
+			print "You are going insane."
+	if cthulhu_life >= 10:
+		print "You have killed Cthulhu."
 	else:
-		cthulhu_room()
+		print "You have gone insane."
 
 def dead(why):
 	print " "
