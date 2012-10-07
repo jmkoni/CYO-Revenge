@@ -58,7 +58,8 @@ def anditbegins():
 	elif next == "2":
 		gunsablazin()
 	else:
-		cthulhu()
+		#send it back to the function that called it?
+		cthulhu(anditbegins)
 def gold_room():
 	print "This room is full of gold. How much do you take?"
 
@@ -97,7 +98,7 @@ def bear_room():
 		else:
 			print "I got no idea what that means."
 
-def cthulhu():
+def cthulhu(wherefrom):
 	print "Hmm. You seem to have wondered over to the ocean."
 	print "Rising out of the ocean is Cthulhu."
 	print "He, it, whatever stares at you and you go insane."
@@ -107,21 +108,23 @@ def cthulhu():
 	emily_sanity = 0
 	while cthulhu_life < 10 and emily_sanity < 10:
 		next = raw_input("> ")
-		if "axe" in next:
+		if "axe" or "AXE" or "Axe" in next:
 			cthulhu_life += 4
 			emily_sanity +=2
-			print "Nice hit!"
-		elif "rifle" in next:
+			print "Nice hit! Axe or rifle?"
+		elif "rifle" or "Rifle" or "RIFLE" in next:
 			cthulhu_life +=3
 			emily_sanity +=2
-			print "Good shot!"
+			print "Good shot! Axe or rifle?"
 		else:
 			emily_sanity +=3
-			print "You are going insane."
+			print "You are going insane. Axe or rifle?"
 	if cthulhu_life >= 10:
 		print "You have killed Cthulhu."
+		#try to send it back from whence it came
+		wherefrom()
 	else:
-		print "You have gone insane."
+		dead("You have gone insane. ")
 
 def dead(why):
 	print " "
