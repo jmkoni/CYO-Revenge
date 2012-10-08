@@ -90,12 +90,10 @@ def revengesensei():
 	print "with a revenge sensei in Japan (shhhh those exist)."
 	print "Do you decide to travel to Japan to begin your training?"
 	print "Or do you go to the Hamptons guns blazing but *slightly* underprepared?"
-	hamptons = ('Hamptons', 'hamptons', 'HAMPTONS')
-	japan = ('Japan', 'japan', 'JAPAN')
-	next = raw_input("> ")
-	if any(a in next for a in hamptons):
+	next = raw_input("> ").lower()
+	if "hamptons" in next:
 		hamptonstime()
-	elif any(a in next for a in japan):
+	elif "japan" in next:
 		goingtojapan()
 	else:
 		cthulhu(revengesensei)
