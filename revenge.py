@@ -1,5 +1,10 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 from sys import exit
 import re
+import json
+import urllib2
+import random
 
 def self_destruct():
 	print " "
@@ -22,6 +27,12 @@ def self_destruct():
 def destruct():
 	print " "
 	print "It\'s New Year\'s 2003 and you pick the wrong bar to party at."
+	dance = random.uniform(0.5,1.0)
+	hotness = random.uniform(0.5,1.0)
+	a = 'http://developer.echonest.com/api/v4/song/search?api_key=19EL7JSMTLLWIHPS0&format=json&results=1&artist_end_year_before=2004&min_danceability=0.{dance}&song_min_hotttnesss=0.{hotness}'.format(dance = random.randint(5,10), hotness = random.randint(5,10))
+	f = urllib2.urlopen(a)
+	songdata = json.load(f)
+	print "The song playing on the jukebox is {song} by {artist}".format(song = songdata['songs'][0]['title'], artist = songdata['songs'][0]['artist_name'])
 	print "You start a fight with these two punks."
 	print "One is a larger woman who seems to have a knife."
 	print "The other is a skinny man who doesn?t appear to have a weapon."
@@ -44,7 +55,7 @@ def anditbegins():
 	print " "
 	print "1. Victoria Grayson: Queen of the Hamptons. Your father’s lover before he was framed."
 	print "2. Conrad Grayson: CEO of Grayson Global. He is directly responsible for what happened to your father."
-	print "3. Bill Harmon: Your father's best friend. Testified against your father to save his job.
+	print "3. Bill Harmon: Your father's best friend. Testified against your father to save his job."
 	print "4. Dr. Michelle Banks: Put you in an institution in order to further her career."
 	print "5. Mason Treadwell: Originally told you he would print the truth, but his book about your father was full of LIES!"
 	print "6. Senator Kingsly: Ignored evidence that would have saved your father and proven him not guilty."
@@ -99,6 +110,7 @@ def bear_room():
 			print "I got no idea what that means."
 
 def cthulhu(wherefrom):
+	print " "
 	print "Hmm. You seem to have wondered over to the ocean."
 	print "Rising out of the ocean is Cthulhu."
 	print "He, it, whatever stares at you and you go insane."
@@ -106,18 +118,20 @@ def cthulhu(wherefrom):
 	print "You have two choices. Do you pick the axe or the rifle?"
 	cthulhu_life = 0
 	emily_sanity = 0
+	rifle = ('rifle', 'Rifle', 'RIFLE')
+	axe = ('axe', 'Axe', 'AXE')
 	while cthulhu_life < 10 and emily_sanity < 10:
 		next = raw_input("> ")
-		if "axe" or "AXE" or "Axe" in next:
+		if any(a in next for a in axe):
 			cthulhu_life += 4
 			emily_sanity +=2
 			print "Nice hit! Axe or rifle?"
-		elif "rifle" or "Rifle" or "RIFLE" in next:
+		elif any(b in next for b in rifle):
 			cthulhu_life +=3
 			emily_sanity +=2
 			print "Good shot! Axe or rifle?"
 		else:
-			emily_sanity +=3
+			emily_sanity +=4
 			print "You are going insane. Axe or rifle?"
 	if cthulhu_life >= 10:
 		print "You have killed Cthulhu."
