@@ -8,15 +8,15 @@ import random
 
 def self_destruct():
 	print " "
-	print "It\'s 2002 and you are now an 18 year old billionaire with major issues."
-	print "You\'re partying like you just got out of juvie and maybe getting into a few bar fights."
+	print "It's 2002 and you are now an 18 year old billionaire with major issues."
+	print "You're partying like you just got out of juvie and maybe getting into a few bar fights."
 	print "Then pesky, pesky Nolan shows up again to bail you out."
-	print "He comments on your self-destruction and asks if you\'ve read the journals."
+	print "He comments on your self-destruction and asks if you've read the journals."
 	print "What do you do?"
 	print " "
-	print "1) Say \"hell no, I don\'t care what they say. My father was a terrorist.\""
+	print "1) Say \"hell no, I don't care what they say. My father was a terrorist.\""
 	print "2) Consider that maybe this is not what you should be doing and maybe"
-	print "   looking into your and your father\'s history would be worth your time."
+	print "   looking into your and your father's history would be worth your time."
 	next = raw_input("> ")
 	if next == "1":
 		destruct()
@@ -24,18 +24,20 @@ def self_destruct():
 		anditbegins()
 	else:
 		dead("Looks like the guy you were fighting with in the bar came back out and stabbed you.")
+		
 def destruct():
 	print " "
-	print "It\'s New Year\'s 2003 and you pick the wrong bar to party at."
-	dance = random.uniform(0.5,1.0)
-	hotness = random.uniform(0.5,1.0)
-	a = 'http://developer.echonest.com/api/v4/song/search?api_key=19EL7JSMTLLWIHPS0&format=json&results=1&artist_end_year_before=2004&min_danceability=0.{dance}&song_min_hotttnesss=0.{hotness}'.format(dance = random.randint(5,10), hotness = random.randint(5,10))
+	print "It's New Year's 2003 and you pick the wrong bar to party at."
+	a = 'http://developer.echonest.com/api/v4/song/search?api_key=19EL7JSMTLLWIHPS0&format=json&results=1&artist_end_year_before=2004&min_danceability=0.{dance}&song_min_hotttnesss=0.{hotness}'.format(dance = random.randint(5,9), hotness = random.randint(5,9))
 	f = urllib2.urlopen(a)
-	songdata = json.load(f)
-	print "The song playing on the jukebox is {song} by {artist}".format(song = songdata['songs'][0]['title'], artist = songdata['songs'][0]['artist_name'])
+	songdata = json.load(f)['response']
+	if not songdata['songs']:
+		print "The song playing on the jukebox is 'Higher' by Creed. It makes you a bit stabby."
+	else:
+		print "The song playing on the jukebox is {song} by {artist}".format(song = songdata['songs'][0]['title'], artist = songdata['songs'][0]['artist_name'])
 	print "You start a fight with these two punks."
 	print "One is a larger woman who seems to have a knife."
-	print "The other is a skinny man who doesn?t appear to have a weapon."
+	print "The other is a skinny man who doesn't appear to have a weapon."
 	print "Who do you attack first?"
 	print " "
 	print "1) Disarm the woman!"
@@ -47,6 +49,7 @@ def destruct():
 		dead("Not quick enough! The woman stabs you as soon as you go for the man. You die.")
 	else:
 		dead("Too slow! The woman stabs you while the man punches you in the face. You die.")
+		
 def anditbegins():
 	print " "
 	print "Your father’s journals reveal that he isn’t the man that you thought he was."
@@ -71,44 +74,63 @@ def anditbegins():
 	else:
 		#send it back to the function that called it?
 		cthulhu(anditbegins)
-def gold_room():
-	print "This room is full of gold. How much do you take?"
-
-	next = raw_input("> ")
-#	if "0" in next or "1" in next:
-	if re.match('^[\d-]+$', next):
-		how_much = int(next)
-	else:
-		dead("Man, learn to type a number.")
-
-	if how_much < 50:
-		print "Nice, you're not greedy, you win!"
-		exit(0)
-	else:
-		dead("You greedy bastard!")
-
-def bear_room():
-	print "There is a bear here."
-	print "The bear has a bunch of honey."
-	print "The fat bear is in front of the other door."
-	print "How are you going to move the bear?"
-	bear_moved = False
-
-	while True:
-		next = raw_input("> ")
 		
-		if next == "take honey":
-			dead("The bear looks at you then slaps your face off.")
-		elif next == "taunt bear" and not bear_moved:
-			print "The bear has moved from the door. You can go through it now."
-			bear_moved = True
-		elif next == "taunt bear" and bear_moved:
-			dead("The bear gets pissed off and chews your leff off.")
-		elif next == "open door" and bear_moved:
-			gold_room()
-		else:
-			print "I got no idea what that means."
+def changetoemily():
+	print "It’s revenge time. But everyone knows your name."
+	print "You go back to Allenwood with a plan:"
+	print "convince your old cell mate to switch names with you."
+	print "You earned her trust on the inside, but you still have"
+	print "to convince her that you are still her best friend."
+#(insert options on becoming emily’s bestie)"
+	revengesensei()
 
+def revengesensei():
+	print "You are now Emily Thorne."
+	print "The warden at Allenwood put you in contact"
+	print "with a revenge sensei in Japan (shhhh those exist)."
+	print "Do you decide to travel to Japan to begin your training?"
+	print "Or do you go to the Hamptons guns blazing but *slightly* underprepared?"
+	hamptons = ('Hamptons', 'hamptons', 'HAMPTONS')
+	japan = ('Japan', 'japan', 'JAPAN')
+	next = raw_input("> ")
+	if any(a in next for a in hamptons):
+		hamptonstime()
+	elif any(a in next for a in japan):
+		goingtojapan()
+	else:
+		cthulhu(revengesensei)
+		
+def gunsablazin():
+	print "You’re right, who needs preparation?"
+	print "These assholes just need a good old fashioned killing,"
+	print "just like what happened to your dad. You go down to Jersey"
+	print "to pick up a few automatics and some ammo from the corner store."
+	print "Who do you go after first?"
+	print " "
+	print "1. Victoria Grayson"
+	print "2. Conrad Grayson"
+	print "3. Bill Harmon"
+	print "4. Dr. Michelle Banks"
+	print "5. Mason Treadwell"
+	print "6. Senator Kingsly"
+	print " "
+	next = raw_input("> ")
+	# give each person a variable that says whether they are alive. can't kill them twice!
+	# also gives emily a variable that allows her to kill 2 people only
+	if next == "1":
+		print "You killed Victoria!"
+	elif next == "2":
+		print "You killed Victoria!"
+	elif next == "3":
+		print "You killed Victoria!"
+	elif next == "4":
+		print "You killed Victoria!"
+	elif next == "5":
+		print "You killed Victoria!"
+	elif next == "6":
+		print "You killed Victoria!"
+	else:
+		cthulhu(gunsablazin)
 def cthulhu(wherefrom):
 	print " "
 	print "Hmm. You seem to have wondered over to the ocean."
@@ -117,21 +139,21 @@ def cthulhu(wherefrom):
 	print "Can you kill Cthulhu before he drives you insane?"
 	print "You have two choices. Do you pick the axe or the rifle?"
 	cthulhu_life = 0
-	emily_sanity = 0
+	global emily_sanity
 	rifle = ('rifle', 'Rifle', 'RIFLE')
 	axe = ('axe', 'Axe', 'AXE')
 	while cthulhu_life < 10 and emily_sanity < 10:
 		next = raw_input("> ")
 		if any(a in next for a in axe):
-			cthulhu_life += 4
-			emily_sanity +=2
+			cthulhu_life += 5
+			emily_sanity +=1
 			print "Nice hit! Axe or rifle?"
 		elif any(b in next for b in rifle):
-			cthulhu_life +=3
-			emily_sanity +=2
+			cthulhu_life +=4
+			emily_sanity +=1
 			print "Good shot! Axe or rifle?"
 		else:
-			emily_sanity +=4
+			emily_sanity +=2
 			print "You are going insane. Axe or rifle?"
 	if cthulhu_life >= 10:
 		print "You have killed Cthulhu."
@@ -147,7 +169,7 @@ def dead(why):
 
 def start():
 	print "Date: June 2002. You're Amanda Clarke."
-	print "You're father is David Clarke, convicted of helping launder money"
+	print "Your father is David Clarke, convicted of helping launder money"
 	print "for the domestic terrorists who blew up Flight 197 on June 4, 1993."
 	print "You've just been released from Allenwood Juvenile Detention Facility after two years." 
 	print "Picking you up is Nolan Ross."
@@ -161,7 +183,8 @@ def start():
 	print "   But definitely take the money. There is some sweet partying to be done."
 	print "2) You're intrigued. You go through the contents of the box."
 	print "   And take the money. It is yours, after all."
-	
+	emily_sanity=0
+	global emily_sanity
 	next = raw_input("> ")
 	
 	if next == "1":
