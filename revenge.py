@@ -245,6 +245,6 @@ def start():
 	elif next == "2":
 		anditbegins()
 	else:
-		dead("Looks like you drank too much tequila in Allenwood and forgot how to talk without slurring your words. You couldn't figure out how to get the money and end up homeless.")
+		dead("Looks like you drank too much tequila in Allenwood and forgot how to talk without slurring your words. \nYou couldn't figure out how to get the money and end up homeless.")
 
 start() 
