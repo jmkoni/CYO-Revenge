@@ -61,7 +61,7 @@ def anditbegins():
 	print "3. Bill Harmon: Your father's best friend. Testified against your father to save his job."
 	print "4. Dr. Michelle Banks: Put you in an institution in order to further her career."
 	print "5. Mason Treadwell: Originally told you he would print the truth, but his book about your father was full of LIES!"
-	print "6. Senator Kingsly: Ignored evidence that would have saved your father and proven him not guilty."
+	print "6. Senator Tom Kingsly: Ignored evidence that would have saved your father and proven him not guilty."
 	print " "
 	print "What do you do now? Do you:"
 	print "1. Take time to plan it out. These assholes must be taken down appropriately."
@@ -70,12 +70,13 @@ def anditbegins():
 	if next == "1":
 		changetoemily()
 	elif next == "2":
-		gunsablazin()
+		gunsablazin(3)
 	else:
 		#send it back to the function that called it?
 		cthulhu(anditbegins)
 		
 def changetoemily():
+	print " "
 	print "It’s revenge time. But everyone knows your name."
 	print "You go back to Allenwood with a plan:"
 	print "convince your old cell mate to switch names with you."
@@ -85,6 +86,7 @@ def changetoemily():
 	revengesensei()
 
 def revengesensei():
+	print " "
 	print "You are now Emily Thorne."
 	print "The warden at Allenwood put you in contact"
 	print "with a revenge sensei in Japan (shhhh those exist)."
@@ -92,13 +94,14 @@ def revengesensei():
 	print "Or do you go to the Hamptons guns blazing but *slightly* underprepared?"
 	next = raw_input("> ").lower()
 	if "hamptons" in next:
-		hamptonstime()
+		gunsablazin(0)
 	elif "japan" in next:
 		goingtojapan()
 	else:
 		cthulhu(revengesensei)
 		
-def gunsablazin():
+def gunsablazin(exp):
+	print " "
 	print "You’re right, who needs preparation?"
 	print "These assholes just need a good old fashioned killing,"
 	print "just like what happened to your dad. You go down to Jersey"
@@ -110,25 +113,71 @@ def gunsablazin():
 	print "3. Bill Harmon"
 	print "4. Dr. Michelle Banks"
 	print "5. Mason Treadwell"
-	print "6. Senator Kingsly"
+	print "6. Senator Tom Kingsly"
 	print " "
-	next = raw_input("> ")
+	
+	tally = exp
 	# give each person a variable that says whether they are alive. can't kill them twice!
 	# also gives emily a variable that allows her to kill 2 people only
-	if next == "1":
-		print "You killed Victoria!"
-	elif next == "2":
-		print "You killed Victoria!"
-	elif next == "3":
-		print "You killed Victoria!"
-	elif next == "4":
-		print "You killed Victoria!"
-	elif next == "5":
-		print "You killed Victoria!"
-	elif next == "6":
-		print "You killed Victoria!"
+	while tally <= 4:
+		next = raw_input("> ")
+		if next == "1" and victoria == True:
+			print "You killed Victoria!"
+			victoria = False
+			tally +=1
+		elif next == "1" and victoria == False:
+			print "You looped around and tried to kill Victoria again. That was dumb."
+			tally += 1
+		elif next == "2" and conrad == True:
+			print "You killed Conrad!"
+			conrad = False
+			tally += 1
+		elif next == "2" and conrad == False:
+			print "You looped around and tried to kill Conrad again. That was dumb."
+			tally +=1
+		elif next == "3":
+			print "You killed Bill!"
+			bill = False
+			tally += 1
+		elif next == "2" and conrad == False:
+			print "You looped around and tried to kill Bill again. That was dumb."
+			tally +=1
+		elif next == "4":
+			print "You killed Dr. Banks!"
+			michelle = False
+			tally += 1
+		elif next == "2" and conrad == False:
+			print "You looped around and tried to kill Dr. Banks again. That was dumb."
+			tally +=1
+		elif next == "5":
+			print "You killed Mason!"
+			mason = False
+			tally += 1
+		elif next == "2" and conrad == False:
+			print "You looped around and tried to kill Mason again. That was dumb."
+			tally +=1
+		elif next == "6":
+			print "You killed Senator Kingsley!"
+			tom = False
+			tally += 1
+		elif next == "2" and conrad == False:
+			print "You looped around and tried to kill Senator Kingsley again. That was dumb."
+			tally +=1
+		else:
+			cthulhu(gunsablazin)
+		global victoria, conrad, bill, michelle, tom, mason
+	print " "
+	print "You hear the cops coming. Two choices:"
+	print "1. You are not going down without a fight. Shootout!"
+	print "2. Surrender and go to jail. Maybe you can escape?"
+	next2 = raw_input("> ")
+	if next2 == "1":
+		dead("Shooting at cops is not the best idea. You get gunned downed by cops.")
+	elif next2 == "2":
+		dead("You are arrested and sent to jail for life.")
 	else:
-		cthulhu(gunsablazin)
+		dead("You tried to run, but the feds found you in Tennessee.")
+		
 def cthulhu(wherefrom):
 	print " "
 	print "Hmm. You seem to have wondered over to the ocean."
@@ -182,7 +231,13 @@ def start():
 	print "2) You're intrigued. You go through the contents of the box."
 	print "   And take the money. It is yours, after all."
 	emily_sanity=0
-	global emily_sanity
+	victoria = True
+	conrad = True
+	bill = True
+	michelle = True
+	mason = True
+	tom = True
+	global emily_sanity, victoria, conrad, bill, michelle, mason, tom
 	next = raw_input("> ")
 	
 	if next == "1":
