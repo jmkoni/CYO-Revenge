@@ -6,6 +6,7 @@ import json
 import urllib2
 import random
 
+# Start of Amanda's journey into self-destruction
 def self_destruct():
 	print " "
 	print "It's 2002 and you are now an 18 year old billionaire with major issues."
@@ -24,16 +25,20 @@ def self_destruct():
 		anditbegins()
 	else:
 		dead("Looks like the guy you were fighting with in the bar came back out and stabbed you.")
-		
+
+#Amanda is destructing.		
 def destruct():
 	print " "
 	print "It's New Year's 2003 and you pick the wrong bar to party at."
+	#pick out a song at random that is from 2003 or ealier that is both "hot" and danceable (likely to be played at a bar)
 	a = 'http://developer.echonest.com/api/v4/song/search?api_key=19EL7JSMTLLWIHPS0&format=json&results=1&artist_end_year_before=2004&min_danceability=0.{dance}&song_min_hotttnesss=0.{hotness}'.format(dance = random.randint(5,9), hotness = random.randint(5,9))
 	f = urllib2.urlopen(a)
 	songdata = json.load(f)['response']
+	#if a song isn't picked, play Creed. Yuck.
 	if not songdata['songs']:
 		print "The song playing on the jukebox is 'Higher' by Creed. It makes you a bit stabby."
 	else:
+		#print the song that's playing
 		print "The song playing on the jukebox is {song} by {artist}".format(song = songdata['songs'][0]['title'], artist = songdata['songs'][0]['artist_name'])
 	print "You start a fight with these two punks."
 	print "One is a larger woman who seems to have a knife."
@@ -43,13 +48,15 @@ def destruct():
 	print "1) Disarm the woman!"
 	print "2) Take out scrawny."
 	next = raw_input("> ")
+	#this all goes poorly and all roads lead to death
 	if next == "1":
 		dead("Too bad, scrawny also had a knife! He stabs you in the back and you die.")
 	elif next == "2":
 		dead("Not quick enough! The woman stabs you as soon as you go for the man. You die.")
 	else:
 		dead("Too slow! The woman stabs you while the man punches you in the face. You die.")
-		
+
+#Amanda has decided to avenge her father.		
 def anditbegins():
 	print " "
 	print "Your father’s journals reveal that he isn’t the man that you thought he was."
@@ -70,9 +77,10 @@ def anditbegins():
 	if next == "1":
 		changetoemily()
 	elif next == "2":
+		#call gunsablazin with a "smarts" variable. 3 less people that emily can kill.
 		gunsablazin(3)
 	else:
-		#send it back to the function that called it?
+		#send it back to the function that called it
 		cthulhu(anditbegins)
 		
 def changetoemily():
@@ -94,6 +102,7 @@ def revengesensei():
 	print "Or do you go to the Hamptons guns blazing but *slightly* underprepared?"
 	next = raw_input("> ").lower()
 	if "hamptons" in next:
+		#call gunsablazin with "smarts" variable. you are pretty smart now.
 		gunsablazin(0)
 	elif "japan" in next:
 		goingtojapan()
@@ -165,6 +174,7 @@ def gunsablazin(exp):
 			tally +=1
 		else:
 			cthulhu(gunsablazin)
+		#defines life variables as global
 		global victoria, conrad, bill, michelle, tom, mason
 	print " "
 	print "You hear the cops coming. Two choices:"
@@ -177,7 +187,8 @@ def gunsablazin(exp):
 		dead("You are arrested and sent to jail for life.")
 	else:
 		dead("You tried to run, but the feds found you in Tennessee.")
-		
+
+# sends player to fight cthulhu when they press the wrong button. sends you back to originating function if you defeat cthulhu	
 def cthulhu(wherefrom):
 	print " "
 	print "Hmm. You seem to have wondered over to the ocean."
@@ -185,17 +196,19 @@ def cthulhu(wherefrom):
 	print "He, it, whatever stares at you and you go insane."
 	print "Can you kill Cthulhu before he drives you insane?"
 	print "You have two choices. Do you pick the axe or the rifle?"
+	#cthulhu starts at zero each time
 	cthulhu_life = 0
+	#declares global sanity variable declared at the beginning. keep fighting cthulhu, go insane.
 	global emily_sanity
-	rifle = ('rifle', 'Rifle', 'RIFLE')
-	axe = ('axe', 'Axe', 'AXE')
 	while cthulhu_life < 10 and emily_sanity < 10:
 		next = raw_input("> ")
-		if any(a in next for a in axe):
+		#sets input to lower case
+		next = raw_input("> ").lower()
+		if "axe" in next:
 			cthulhu_life += 5
 			emily_sanity +=1
 			print "Nice hit! Axe or rifle?"
-		elif any(b in next for b in rifle):
+		elif "rifle" in next:
 			cthulhu_life +=4
 			emily_sanity +=1
 			print "Good shot! Axe or rifle?"
@@ -230,6 +243,7 @@ def start():
 	print "   But definitely take the money. There is some sweet partying to be done."
 	print "2) You're intrigued. You go through the contents of the box."
 	print "   And take the money. It is yours, after all."
+	# initializes emily's sanity and life variables
 	emily_sanity=0
 	victoria = True
 	conrad = True
@@ -237,9 +251,9 @@ def start():
 	michelle = True
 	mason = True
 	tom = True
+	#makes variables global
 	global emily_sanity, victoria, conrad, bill, michelle, mason, tom
 	next = raw_input("> ")
-	
 	if next == "1":
 		self_destruct()
 	elif next == "2":
