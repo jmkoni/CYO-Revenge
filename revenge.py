@@ -78,7 +78,7 @@ def anditbegins():
 		changetoemily()
 	elif next == "2":
 		#call gunsablazin with a "smarts" variable. 3 less people that emily can kill.
-		gunsablazin(3)
+		gunsablazin(4)
 	else:
 		#send it back to the function that called it
 		cthulhu(anditbegins)
@@ -90,8 +90,18 @@ def changetoemily():
 	print "convince your old cell mate to switch names with you."
 	print "You earned her trust on the inside, but you still have"
 	print "to convince her that you are still her best friend."
+	print " "
+	print "How do you do that?"
+	print "1. Offer to give her money! She needs it, you have it."
+	print "2. Just ask her. And then give her whatever she wants."
 #(insert options on becoming emily’s bestie)"
-	revengesensei()
+	next = raw_input("> ")
+	if next == "1":
+		revengesensei()
+	elif next == "2":
+		revengesensei()
+	else:
+		cthulhu(changetoemily)
 
 def revengesensei():
 	print " "
@@ -103,18 +113,48 @@ def revengesensei():
 	next = raw_input("> ").lower()
 	if "hamptons" in next:
 		#call gunsablazin with "smarts" variable. you are pretty smart now.
-		gunsablazin(0)
+		gunsablazin(2)
 	elif "japan" in next:
 		goingtojapan()
 	else:
 		cthulhu(revengesensei)
+
+def goingtojapan():
+	print " "
+	print "You are in Japan getting some training. Awesome!"
+	print "Your sensei senses that you have excellent ninja skills."
+	print "He is right."
+	print "He's teaching you how to plot excellent revenge plots to"
+	print "take people down without implicating yourself."
+	print " "
+	print "What do you want to do next?"
+	print "1. You have nothing to live for, so might as well just shoot 'em."
+	print "2. Ah yes, this plotting thing sounds like an excellent idea."
+	next = raw_input("> ")
+	if next == "1":
+		gunsablazin(0)
+	elif next == "2":
+		revengetime()
+	else:
+		cthulhu(goingtojapan)
 		
+# THIS IS THE STOPPING POINT RIGHT NOT
+def revengetime():
+	# ideas: have each person be a separate function with a separate plot and be dependent on the order (if victoria is first, the rest are unsucessful)
+	
 def gunsablazin(exp):
 	print " "
-	print "You’re right, who needs preparation?"
-	print "These assholes just need a good old fashioned killing,"
-	print "just like what happened to your dad. You go down to Jersey"
-	print "to pick up a few automatics and some ammo from the corner store."
+	if exp == 4:
+		print "You’re right, who needs preparation?"
+		print "These assholes just need a good old fashioned killing,"
+		print "just like what happened to your dad. You go down to Jersey"
+		print "to pick up a few automatics and some ammo from the corner store."
+	elif exp == 2:
+		print "Yeah, Japan is pretty lame. Why waste the time?"
+		print "You pick up some guns and ammo and head to the Hamptons."
+	else
+		print "Time for some high quality, righteous vengeance."
+		print "You've got your weapons and you are ready to sniper some assholes."
 	print "Who do you go after first?"
 	print " "
 	print "1. Victoria Grayson"
@@ -177,16 +217,20 @@ def gunsablazin(exp):
 		#defines life variables as global
 		global victoria, conrad, bill, michelle, tom, mason
 	print " "
-	print "You hear the cops coming. Two choices:"
-	print "1. You are not going down without a fight. Shootout!"
-	print "2. Surrender and go to jail. Maybe you can escape?"
-	next2 = raw_input("> ")
-	if next2 == "1":
-		dead("Shooting at cops is not the best idea. You get gunned downed by cops.")
-	elif next2 == "2":
-		dead("You are arrested and sent to jail for life.")
+	if exp > 0:
+		print "You hear the cops coming. Two choices:"
+		print "1. You are not going down without a fight. Shootout!"
+		print "2. Surrender and go to jail. Maybe you can escape?"
+		next2 = raw_input("> ")
+		if next2 == "1":
+			dead("Shooting at cops is not the best idea. You get gunned downed by cops.")
+		elif next2 == "2":
+			dead("You are arrested and sent to jail for life.")
+		else:
+			dead("You tried to run, but the feds found you in Tennessee.")
 	else:
-		dead("You tried to run, but the feds found you in Tennessee.")
+		print "Your gun just jammed, but you managed to hide before anyone saw you."
+		dead("You didn't get everyone, but you'll learn to deal.")
 
 # sends player to fight cthulhu when they press the wrong button. sends you back to originating function if you defeat cthulhu	
 def cthulhu(wherefrom):
