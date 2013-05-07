@@ -138,10 +138,14 @@ def goingtojapan():
 	else:
 		cthulhu(goingtojapan)
 		
-# THIS IS THE STOPPING POINT RIGHT NOT
 def revengetime():
 	# ideas: have each person be a separate function with a separate plot and be dependent on the order (if victoria is first, the rest are unsucessful)
+	print "REVENGE TIME"
 	
+def victoria():
+	print "You decide to go after Victoria."
+
+
 def gunsablazin(exp):
 	print " "
 	if exp == 4:
@@ -152,7 +156,7 @@ def gunsablazin(exp):
 	elif exp == 2:
 		print "Yeah, Japan is pretty lame. Why waste the time?"
 		print "You pick up some guns and ammo and head to the Hamptons."
-	else
+	else:
 		print "Time for some high quality, righteous vengeance."
 		print "You've got your weapons and you are ready to sniper some assholes."
 	print "Who do you go after first?"
@@ -164,7 +168,8 @@ def gunsablazin(exp):
 	print "5. Mason Treadwell"
 	print "6. Senator Tom Kingsly"
 	print " "
-	
+	#defines life variables as global
+	global victoria, conrad, bill, michelle, tom, mason
 	tally = exp
 	# give each person a variable that says whether they are alive. can't kill them twice!
 	# also gives emily a variable that allows her to kill 2 people only
@@ -184,38 +189,36 @@ def gunsablazin(exp):
 		elif next == "2" and conrad == False:
 			print "You looped around and tried to kill Conrad again. That was dumb."
 			tally +=1
-		elif next == "3":
+		elif next == "3" and bill == True:
 			print "You killed Bill!"
 			bill = False
 			tally += 1
-		elif next == "2" and conrad == False:
+		elif next == "2" and bill == False:
 			print "You looped around and tried to kill Bill again. That was dumb."
 			tally +=1
-		elif next == "4":
+		elif next == "4" and michelle == True:
 			print "You killed Dr. Banks!"
 			michelle = False
 			tally += 1
-		elif next == "2" and conrad == False:
+		elif next == "2" and michelle == False:
 			print "You looped around and tried to kill Dr. Banks again. That was dumb."
 			tally +=1
-		elif next == "5":
+		elif next == "5" and mason == True:
 			print "You killed Mason!"
 			mason = False
 			tally += 1
-		elif next == "2" and conrad == False:
+		elif next == "2" and mason == False:
 			print "You looped around and tried to kill Mason again. That was dumb."
 			tally +=1
-		elif next == "6":
+		elif next == "6" and tom == True:
 			print "You killed Senator Kingsley!"
 			tom = False
 			tally += 1
-		elif next == "2" and conrad == False:
+		elif next == "2" and tom == False:
 			print "You looped around and tried to kill Senator Kingsley again. That was dumb."
 			tally +=1
 		else:
-			cthulhu(gunsablazin)
-		#defines life variables as global
-		global victoria, conrad, bill, michelle, tom, mason
+			cthulhu(gunsablazin)		
 	print " "
 	if exp > 0:
 		print "You hear the cops coming. Two choices:"
@@ -245,7 +248,6 @@ def cthulhu(wherefrom):
 	#declares global sanity variable declared at the beginning. keep fighting cthulhu, go insane.
 	global emily_sanity
 	while cthulhu_life < 10 and emily_sanity < 10:
-		next = raw_input("> ")
 		#sets input to lower case
 		next = raw_input("> ").lower()
 		if "axe" in next:
@@ -268,7 +270,7 @@ def cthulhu(wherefrom):
 
 def dead(why):
 	print " "
-	print why, "Sorry."
+	print why, "Sorry.\n"
 	exit(0)
 
 def start():
@@ -287,6 +289,8 @@ def start():
 	print "   But definitely take the money. There is some sweet partying to be done."
 	print "2) You're intrigued. You go through the contents of the box."
 	print "   And take the money. It is yours, after all."
+	#makes variables global
+	global emily_sanity, victoria, conrad, bill, michelle, mason, tom
 	# initializes emily's sanity and life variables
 	emily_sanity=0
 	victoria = True
@@ -295,8 +299,7 @@ def start():
 	michelle = True
 	mason = True
 	tom = True
-	#makes variables global
-	global emily_sanity, victoria, conrad, bill, michelle, mason, tom
+	
 	next = raw_input("> ")
 	if next == "1":
 		self_destruct()
