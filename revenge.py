@@ -18,7 +18,8 @@ def self_destruct():
 	print "1) Say \"hell no, I don't care what they say. My father was a terrorist.\""
 	print "2) Consider that maybe this is not what you should be doing and maybe"
 	print "   looking into your and your father's history would be worth your time."
-	next = raw_input("> ")
+	# get user input
+	next = raw_input("* ")
 	if next == "1":
 		destruct()
 	elif next == "2":
