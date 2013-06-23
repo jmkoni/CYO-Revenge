@@ -19,7 +19,7 @@ def self_destruct():
 	print "2) Consider that maybe this is not what you should be doing and maybe"
 	print "   looking into your and your father's history would be worth your time."
 	# get user input
-	next = raw_input("* ")
+	next = raw_input("> ")
 	if next == "1":
 		destruct()
 	elif next == "2":
