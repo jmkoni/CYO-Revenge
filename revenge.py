@@ -194,28 +194,28 @@ def gunsablazin(exp):
 			print "You killed Bill!"
 			bill = False
 			tally += 1
-		elif next == "2" and bill == False:
+		elif next == "3" and bill == False:
 			print "You looped around and tried to kill Bill again. That was dumb."
 			tally +=1
 		elif next == "4" and michelle == True:
 			print "You killed Dr. Banks!"
 			michelle = False
 			tally += 1
-		elif next == "2" and michelle == False:
+		elif next == "4" and michelle == False:
 			print "You looped around and tried to kill Dr. Banks again. That was dumb."
 			tally +=1
 		elif next == "5" and mason == True:
 			print "You killed Mason!"
 			mason = False
 			tally += 1
-		elif next == "2" and mason == False:
+		elif next == "5" and mason == False:
 			print "You looped around and tried to kill Mason again. That was dumb."
 			tally +=1
 		elif next == "6" and tom == True:
 			print "You killed Senator Kingsley!"
 			tom = False
 			tally += 1
-		elif next == "2" and tom == False:
+		elif next == "6" and tom == False:
 			print "You looped around and tried to kill Senator Kingsley again. That was dumb."
 			tally +=1
 		else:
