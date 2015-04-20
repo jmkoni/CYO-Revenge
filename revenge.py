@@ -149,6 +149,21 @@ def revengetime():
 def victoria():
    print "You decide to go after Victoria."
 
+def conrad():
+   print "You decide to go after Conrad."
+
+def bill():
+   print "You decide to go after Bill."
+
+def michelle():
+   print "You decide to go after Dr. Banks."
+
+def mason():
+   print "You decide to go after Mason Treadwell."
+
+def tom():
+   print "You decide to go after Senator Kingsly."
+
 
 def gunsablazin(exp):
    print " "
